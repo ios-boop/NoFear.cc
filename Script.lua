@@ -1,7 +1,7 @@
 local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/ios-boop/NoFear.cc/main/UI/src.lua"))()
-local window = DrRayLibrary:Load("DrRay", "Default")
-local tab = DrRayLibrary.newTab("My Tab", "ImageIdHere")
-local RGB = Color3.fromRGB(255, 60, 35)
+local window = DrRayLibrary:Load("NoFear.cc || Trident Survival", "Default")
+local tab = DrRayLibrary.newTab("Home", "ImageIdHere")
+local R1 = Color3.fromRGB(255, 60, 35)
 
 function zigzag(X)
 return math.acos(math.cos(X*math.pi))/math.pi
@@ -10,7 +10,7 @@ end
    spawn(function()
        while wait() do
            counter = counter + 0.01
-           RGB = (Color3.fromHSV(zigzag(counter),1,1))
+           R1 = (Color3.fromHSV(zigzag(counter),1,1))
        end
    end)
 end)
@@ -29,9 +29,9 @@ tab.newToggle("Esp", "Toggles Esp", true, function(toggleState)
          wait(0.5)
     for i, ws in ipairs(workspace:GetDescendants()) do
         if ws:FindFirstChild("Humanoid") then
-            if not ws:FindFirstChild("HumanoidRootPart").Color3 == RGB then
+            if not ws:FindFirstChild("HumanoidRootPart").Color3 == R1 then
                 if ws ~= game.Players.LocalPlayer.Character then
-                  ws:FindFirstChild("HumanoidRootPart").Color3 = RGB
+                  ws:FindFirstChild("HumanoidRootPart").Color3 = R1
                 end
             end
         end
