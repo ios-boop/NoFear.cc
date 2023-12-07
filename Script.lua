@@ -1,4 +1,4 @@
-local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
+local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/ios-boop/NoFear.cc/main/UI/src.lua"))()
 local window = DrRayLibrary:Load("DrRay", "Default")
 local tab = DrRayLibrary.newTab("My Tab", "ImageIdHere")
 local RGB = Color3.fromRGB(255, 60, 35)
