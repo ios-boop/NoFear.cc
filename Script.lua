@@ -1,7 +1,9 @@
-local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/ios-boop/NoFear.cc/main/UI/src.lua"))()
-local window = DrRayLibrary:Load("NoFear.cc || Trident Survival", "Default")
-local tab = DrRayLibrary.newTab("Home", "ImageIdHere")
+local Light = game:GetService(“Lighting”)
 local R1 = Color3.fromRGB(255, 60, 35)
+local Ambient_ = Light.Ambient
+local ColorShift_Bottom_ = Light.ColorShift_Bottom
+local ColorShift_Top_ = Light.ColorShift_Top
+
 
 function zigzag(X)
 return math.acos(math.cos(X*math.pi))/math.pi
@@ -15,28 +17,35 @@ end
    end)
 end)
 
-tab.newToggle("Toggle", "Toggle! (prints the state)", true, function(toggleState)
+function fullbright(X)
+if X == true then
+Light.Ambient = Color3.new(1,1,1)
+Light.ColorShift_Bottom = Color3.new(1, 1, 1)
+Light.ColorShift_Top = Color3.new(1, 1, 1)
+Light.LightingChanged:Connect(fullbright(true))
+elseif X == false then
+Light.Ambient = Ambient_
+Light.ColorShift_Bottom = ColorShift_Bottom_
+Light.ColorShift_Top = ColorShift_Top_
+end
+
+local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/ios-boop/NoFear.cc/main/UI/src.lua"))()
+local window = DrRayLibrary:Load("NoFear.cc || Trident Survival", "Default")
+local tab = DrRayLibrary.newTab("Home", "ImageIdHere")
+
+
+
+tab.newToggle("Full Bright", "Full Bright", true, function(toggleState)
     if toggleState then
-        print("On")
+        fullbright(true)
     else
-        print("Off")
+        fullbright(false)
     end
 end)
 
 tab.newToggle("Esp", "Toggles Esp", true, function(toggleState)
     if toggleState then
-        while toggleState do
-         wait(0.5)
-    for i, ws in ipairs(workspace:GetDescendants()) do
-        if ws:FindFirstChild("Humanoid") then
-            if not ws:FindFirstChild("HumanoidRootPart").Color3 == R1 then
-                if ws ~= game.Players.LocalPlayer.Character then
-                  ws:FindFirstChild("HumanoidRootPart").Color3 = R1
-                end
-            end
-        end
-    end
-end
+        print("On")
     else
         print("Off")
     end
